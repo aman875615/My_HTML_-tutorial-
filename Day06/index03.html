@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bootstrap Components</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bootstrap Demo</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <!-- ================= ALERT & BADGE ================= -->
+    <div class="alert alert-success">
+        Welcome to Bootstrap Components Demo
+        <span class="badge bg-danger">New</span>
+    </div>
+
+    <!-- ================= GRID SYSTEM ================= -->
+    <h3 class="mt-4">Grid System</h3>
+    <div class="row text-white">
+        <div class="col-md-4 bg-primary p-3">Column 1</div>
+        <div class="col-md-4 bg-success p-3">Column 2</div>
+        <div class="col-md-4 bg-danger p-3">Column 3</div>
+    </div>
+
+    <!-- ================= BUTTONS & DROPDOWN ================= -->
+    <h3 class="mt-4">Buttons & Dropdown</h3>
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-success">Success</button>
+
+    <div class="dropdown d-inline">
+        <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">HTML</a></li>
+            <li><a class="dropdown-item" href="#">CSS</a></li>
+            <li><a class="dropdown-item" href="#">Bootstrap</a></li>
+        </ul>
+    </div>
+
+    <!-- ================= CARD ================= -->
+    <h3 class="mt-4">Card</h3>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Bootstrap Card</h5>
+            <p class="card-text">This is a simple card component.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+
+    <!-- ================= FORM ================= -->
+    <h3 class="mt-4">Form</h3>
+    <form>
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Enter email">
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="password" class="form-control">
+        </div>
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+    <!-- ================= TABLE ================= -->
+    <h3 class="mt-4">Table</h3>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+        </tr>
+        <tr>
+            <td>Rahul</td>
+            <td>Bootstrap</td>
+        </tr>
+        <tr>
+            <td>Anita</td>
+            <td>CSS</td>
+        </tr>
+    </table>
+
+    <!-- ================= PROGRESS BAR ================= -->
+    <h3 class="mt-4">Progress Bar</h3>
+    <div class="progress">
+        <div class="progress-bar bg-success" style="width: 70%">70%</div>
+    </div>
+
+    <!-- ================= LIST GROUP ================= -->
+    <h3 class="mt-4">List Group</h3>
+    <ul class="list-group">
+        <li class="list-group-item">HTML</li>
+        <li class="list-group-item">CSS</li>
+        <li class="list-group-item">Bootstrap</li>
+    </ul>
+
+    <!-- ================= MODAL ================= -->
+    <h3 class="mt-4">Modal</h3>
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+        Open Modal
+    </button>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <

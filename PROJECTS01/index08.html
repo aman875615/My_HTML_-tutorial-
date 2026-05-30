@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ShopX | E-Commerce</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui, Arial;
+  background:#f1f3f6;
+}
+button{cursor:pointer;border:none}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:12px 30px;
+  background:#131921;
+  color:white;
+}
+.logo{
+  font-size:26px;
+  font-weight:800;
+  color:#ff9900;
+}
+.search{
+  flex:1;
+  padding:10px;
+  border-radius:4px;
+  border:none;
+}
+.cart-btn{
+  background:none;
+  color:white;
+  font-size:20px;
+  position:relative;
+}
+.cart-count{
+  position:absolute;
+  top:-6px;
+  right:-10px;
+  background:#ff9900;
+  color:black;
+  font-size:12px;
+  padding:2px 6px;
+  border-radius:50%;
+}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(to right,#ff9900,#ff6600);
+  padding:70px 30px;
+  color:white;
+}
+.hero h1{font-size:42px}
+
+/* ===== PRODUCTS ===== */
+.products{
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  border-radius:10px;
+  padding:15px;
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card h4{margin:10px 0}
+.price{font-weight:bold}
+.card button{
+  width:100%;
+  padding:8px;
+  background:#ff9900;
+  margin-top:10px;
+}
+
+/* ===== CART DRAWER ===== */
+.cart{
+  position:fixed;
+  top:0;
+  right:-400px;
+  width:360px;
+  height:100%;
+  background:white;
+  padding:20px;
+  transition:.4s;
+  box-shadow:-5px 0 15px rgba(0,0,0,.2);
+  z-index:200;
+}
+.cart.open{right:0}
+.cart h3{margin-top:0}
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.total{
+  font-weight:bold;
+  margin-top:20px;
+}
+.close{
+  float:right;
+  font-size:20px;
+  background:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#131921;
+  color:#aaa;
+  padding:25px;
+  text-align:center;
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔷 NAVBAR -->
+<div class="navbar">
+  <div class="logo">ShopX</div>
+  <input class="search" placeholder="Search products..." onkeyup="searchProduct(this.value)">
+  <button class="cart-btn" onclick="toggleCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count" id="count">0</span>
+  </button>
+</div>
+
+<!-- 🔷 HERO -->
+<div class="hero">
+  <h1>Shop Smart. Live Better.</h1>
+  <p>Premium Products • Best Prices • Fast Delivery</p>
+</div>
+
+<!-- 🔷 PRODUCTS -->
+<div class="products" id="products"></div>
+
+<!-- 🔷 CART -->
+<div class="cart" id="cart">
+  <button class="close" onclick="toggleCart()">✖</button>
+  <h3>Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="total">Total: ₹<span id="total">0</span></div>
+</div>
+
+<!-- 🔷 FOOTER -->
+<footer>
+  © 2026 ShopX • Secure Payments • Fast Delivery
+</footer>
+
+<script>
+/* ===== DATA ===== */
+const productsData=[
+ {id:1,name:"Wireless Headphones",price:2999,img:"https://source.unsplash.com/400x400/?headphones"},
+ {id:2,name:"Smart Watch",price:4999,img:"https://source.unsplash.com/400x400/?smartwatch"},
+ {id:3,name:"Gaming Mouse",price:1599,img:"https://source.unsplash.com/400x400/?mouse"},
+ {id:4,name:"Laptop Stand",price:999,img:"https://source.unsplash.com/400x400/?laptop"},
+ {id:5,name:"Bluetooth Speaker",price:3499,img:"https://source.unsplash.com/400x400/?speaker"}
+];
+
+let cart=[];
+
+/* ===== RENDER PRODUCTS ===== */
+function renderProducts(list){
+  const p=document.getElementById("products");
+  p.innerHTML="";
+  list.forEach(item=>{
+    p.innerHTML+=`
+      <div class="card">
+        <img src="${item.img}">
+        <h4>${item.name}</h4>
+        <div class="price">₹${item.price}</div>
+        <button onclick="addToCart(${item.id})">Add to Cart</button>
+      </div>`;
+  });
+}
+renderProducts(productsData);
+
+/* ===== CART ===== */
+function addToCart(id){
+  const item=productsData.find(p=>p.id===id);
+  cart.push(item);
+  updateCart();
+}
+function updateCart(){
+  document.getElementById("count").innerText=cart.length;
+  let html="",total=0;
+  cart.forEach(i=>{
+    html+=`<div class="cart-item">
+      <span>${i.name}</span>
+      <span>₹${i.price}</span>
+    </div>`;
+    total+=i.price;
+  });
+  document.getElementById("cartItems").innerHTML=html;
+  document.getElementById("total").innerText=total;
+}
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("open");
+}
+
+/* ===== SEARCH ===== */
+function searchProduct(val){
+  const filtered=productsData.filter(p=>p.name.toLowerCase().includes(val.toLowerCase()));
+  renderProducts(filtered);
+}
+</script>
+
+</body>
+</html>

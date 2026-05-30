@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Box Model</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;   /* centers horizontally */
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.box {
+    background-color: rgb(39, 65, 74);
+    margin: 15px;
+}
+
+.box1 {
+    padding: 10px;
+    border: 2px solid red;
+    background-color: rgb(242, 98, 8);
+}
+
+.box2 {
+    padding: 20px;
+    border: 4px dashed green;
+    background-color: white;
+}
+
+.box3 {
+    padding: 30px;
+    border: 6px double rgb(16, 16, 232);
+    background-color: rgb(7, 240, 46);
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box box1">Box 1</div>
+    <div class="box box2">Box 2</div>
+    <div class="box box3">Box 3</div>
+</div>
+
+</body>
+</html>

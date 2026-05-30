@@ -1,21 +1,81 @@
+HTML structure:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Simple Layout</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Style the sidebar */
+.sidebar {
+    background-color: #f1f1f1;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 60px; /* Height of the header */
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Style the sidebar links */
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+/* Style the main content */
+main {
+    margin-left: 250px; /* Width of the sidebar */
+    padding: 20px;
+    margin-top: 80px; /* Height of the header + some spacing */
+}
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="index2.html">About Me</a> |
-        
-    </nav>
-    <h1>Welcome to My Website</h1>
-    <p>This is the homepage of my personal website. Feel free to explore and learn more about me!</p>
-    <ul>    
-        <li><a href="time_table.html">Time Table</a></li>
-        
-    </ul>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <div class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <h2>Main Content</h2>
+        <p>This is the main content area.</p>
+    </main>
 </body>
 </html>
+
+CSS (styles.css):
+
+/* Reset some default styles for the body */
