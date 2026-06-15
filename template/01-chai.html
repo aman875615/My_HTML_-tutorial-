@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amazon - Simple Clone (HTML + CSS)</title>
+  <style>
+    /* BASIC RESET */
+    *{box-sizing:border-box;margin:0;padding:0;font-family: Arial, Helvetica, sans-serif}
+    body{background:#fff;color:#111}
+
+    /* NAVBAR */
+    .navbar{background:#131921;color:white;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav-logo{width:120px;height:40px;background-image:url('logo.png');background-size:contain;background-repeat:no-repeat;background-position:left center}
+    .nav-search{flex:1;display:flex;align-items:center}
+    .search-select{background:#f3f3f3;border-top-left-radius:4px;border-bottom-left-radius:4px;padding:8px 10px;border:none}
+    .search-input{flex:1;padding:10px;border:none;font-size:16px}
+    .search-btn{background:#febd69;padding:10px 16px;border-radius:4px;border:none;cursor:pointer}
+    .nav-actions{display:flex;gap:18px;align-items:center}
+    .nav-actions .line1{font-size:12px;opacity:0.9}
+    .nav-actions .line2{font-weight:700}
+    .cart{display:flex;flex-direction:column;align-items:center;font-weight:700}
+
+    /* PANEL (categories) */
+    .panel{background:#232f3e;color:#fff;padding:8px 16px;font-size:14px;display:flex;gap:16px;align-items:center}
+
+    /* HERO */
+    .hero{height:360px;background-image:url('hero_image.png');background-size:cover;background-position:center;display:flex;align-items:center;padding:32px}
+    .hero .promo{background:rgba(255,255,255,0.92);padding:24px;border-radius:8px;max-width:600px}
+    .hero h1{font-size:28px;margin-bottom:8px}
+
+    /* PRODUCT GRID */
+    .container{max-width:1200px;margin:24px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{border:1px solid #e6e6e6;border-radius:6px;padding:12px;background:#fff}
+    .card img{width:100%;height:180px;object-fit:contain}
+    .card .title{font-size:14px;height:40px;overflow:hidden;margin:8px 0}
+    .price{font-weight:700;margin:6px 0}
+    .rating{color:#b12704;font-size:13px}
+    .btn{display:inline-block;background:#f0c14b;border:1px solid #a88734;padding:8px 12px;border-radius:4px;margin-top:8px;text-decoration:none;color:#111}
+
+    /* FOOTER */
+    .footer{background:#131921;color:#ddd;padding:28px 16px;margin-top:24px}
+
+    /* RESPONSIVE */
+    @media (max-width:720px){
+      .search-select{display:none}
+      .hero{height:220px}
+      .hero .promo{max-width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="navbar">
+    <div class="nav-logo" aria-hidden="true"></div>
+
+    <div class="nav-search">
+      <select class="search-select" aria-label="category">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Books</option>
+      </select>
+      <input class="search-input" placeholder="Search Amazon clone" />
+      <button class="search-btn">Search</button>
+    </div>
+
+    <div class="nav-actions">
+      <div class="nav-signin">
+        <span class="line1">Hello, sign in</span>
+        <span class="line2">Account & Lists</span>
+      </div>
+      <div class="nav-orders">
+        <span class="line1">Returns</span>
+        <span class="line2">& Orders</span>
+      </div>
+      <div class="cart">
+        <span>🛒</span>
+        <span class="line2">Cart</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PANEL -->
+  <div class="panel">☰ All &nbsp; Today's Deals &nbsp; Customer Service &nbsp; Gift Cards &nbsp; Registry</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="promo">
+      <h1>Big Sale — Up to 50% off</h1>
+      <p>Example hero text for this Amazon-like clone. Replace <code>hero_image.png</code> with your own image path.</p>
+      <a class="btn" href="#products">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <main class="container" id="products">
+    <h2 style="margin-bottom:12px">Featured products</h2>
+    <div class="grid">
+      <!-- card 1 -->
+      <article class="card">
+        <img src="product1.png" alt="Product 1" />
+        <div class="title">Example Product Title — Compact, useful and cheap</div>
+        <div class="price">₹799</div>
+        <div class="rating">★★★★☆</div>
+        <a class="btn" href="#">Add to cart</a>
+      </article>
+
+      <!-- card 2 -->
+      <article class="card">
+        <img src="product2.png" alt="Product 2" />
+        <div class="title">Another Product — Good reviews</div>
+        <div class="price">₹1,299</div>
+        <div class="rating">★★★★★</div>
+        <a class="btn" href="#">Add to cart</a>
+      </article>
+
+      <!-- card 3 -->
+      <article class="card">
+        <img src="product3.png" alt="Product 3" />
+        <div class="title">Headphones — Noise cancelling</div>
+        <div class="price">₹2,499</div>
+        <div class="rating">★★★★☆</div>
+        <a class="btn" href="#">Add to cart</a>
+      </article>
+
+      <!-- card 4 -->
+      <article class="card">
+        <img src="product4.png" alt="Product 4" />
+        <div class="title">Smart Watch — Fitness tracking</div>
+        <div class="price">₹3,999</div>
+        <div class="rating">★★★☆☆</div>
+        <a class="btn" href="#">Add to cart</a>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Amazon clone — for learning purpose only. Replace image files (logo.png, hero_image.png, product1.png...) with your own images.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
